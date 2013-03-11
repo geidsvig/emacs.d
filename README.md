@@ -35,6 +35,10 @@ M-x ensime RET
 
 M-x dirtree RET
 
+dedicate the dirtree window
+
+C-c l
+
 
 References:
 
@@ -60,4 +64,7 @@ https://github.com/aemoncannon/ensime
 scala-mode2
 https://github.com/hvesalai/scala-mode2
 
+dedicated windows
+http://dfan.org/blog/2009/02/19/emacs-dedicated-windows/
+http://www.masteringemacs.org/articles/2011/02/08/mastering-key-bindings-emacs/
 

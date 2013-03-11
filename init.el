@@ -73,3 +73,17 @@
 (add-to-list 'load-path "~/.emacs.d/dirtree/")
 (require 'dirtree)
 
+;; allow dedicated windows
+(defun toggle-current-window-dedication ()
+ (interactive)
+ (let* ((window    (selected-window))
+        (dedicated (window-dedicated-p window)))
+   (set-window-dedicated-p window (not dedicated))
+   (message "Window %sdedicated to %s"
+            (if dedicated "no longer " "")
+            (buffer-name))))
+
+;; using 'l' for 'lock'
+(global-set-key (kbd "C-c l") 'toggle-current-window-dedication)
+
+
