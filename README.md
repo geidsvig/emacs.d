@@ -1,0 +1,1 @@
+basic emacs config
