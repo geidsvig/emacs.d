@@ -20,8 +20,6 @@
 
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
-(global-linum-mode 1)
-
 ;; ido
 ; - http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/
 (setq ido-enable-flex-matching t)
@@ -44,12 +42,24 @@
 ;; Make backups of files, even when they're in version control
 (setq vc-make-backup-files t)
 
-;; Make mouse/keyboard/EOL/clipboard work sanely on OS X
-(setq mac-emulate-three-button-mouse t)
-(setq ns-alternate-modifier (quote meta))
-(setq ns-command-modifier (quote meta))
-(setq eol-mnemonic-mac "(Mac)")
-(setq x-select-enable-clipboard t)
+;; Mouse functions for scrolling and text highlights 
+(require 'mouse)
+(xterm-mouse-mode t)
+(defun track-mouse (e)) 
+(setq mouse-sel-mode t)
+
+; Mouse Wheel Scrolling
+; Scroll up two lines without modifiers
+(defun up-slightly () (interactive) (scroll-up 2))
+(defun down-slightly () (interactive) (scroll-down 2))
+(global-set-key [mouse-4] 'down-slightly)
+(global-set-key [mouse-5] 'up-slightly)
+; Scroll up one page with CTRL held
+(defun up-a-lot () (interactive) (scroll-up))
+(defun down-a-lot () (interactive) (scroll-down))
+(global-set-key [C-mouse-4] 'down-a-lot)
+(global-set-key [C-mouse-5] 'up-a-lot)
+
 
 ;; Tabs insert 2 spaces, sentences have one space. 
 (setq-default tab-width 2)
@@ -65,5 +75,20 @@
 ;; Show line and column #
 (line-number-mode 1)                         
 (column-number-mode 1)
+(global-linum-mode 1)
 
+;; https://github.com/zkim/emacs-dirtree
+(add-to-list 'load-path "~/.emacs.d/dirtree/")
+(require 'dirtree)
+
+;;;; http://www.emacswiki.org/emacs/TagsFile#tags_file
+;; brew install ctags
+;; http://ctags.sourceforge.net/
+;; great tutorials here: 
+;;    http://thegreylensmansview.blogspot.ca/2009/02/stone-tools-and-scala-development-part.html
+;;    http://scabl.blogspot.ca/2011/07/scala-emacs-and-etags.html
+;;    http://www.jayconrod.com/posts/36/emacs-etags-a-quick-introduction
+; --- getting ctags working to jump traits/classes/objects
+; --- in project you wish to add tags run:
+; find . -name '*.scala' | xargs etags -r ~/.emacs.d/ctags -a {} \;
 
