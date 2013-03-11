@@ -1,4 +1,4 @@
-(setq linum-format "%d ")
+(setq home-dir "/Users/garretteidsvig/")
 
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -9,29 +9,21 @@
   (package-refresh-contents) (package-install 'scala-mode2))
 
 ;; scala-mode2 for emacs 24+
-; - https://github.com/hvesalai/scala-mode2
 (add-to-list 'load-path "~/.emacs.d/scala-mode2/")
 (require 'scala-mode2)
 
 ;; ensime
-; - https://github.com/aemoncannon/ensime
 (add-to-list 'load-path "~/.emacs.d/ensime/elisp/")
 (require 'ensime)
 
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 ;; ido
-; - http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1)
 (setq ido-create-new-buffer 'always)
 (setq ido-file-extensions-order '(".scala" ".conf" ".xml" ".org" ".txt" ".py" ".emacs" ".el" ".ini" ".cfg" ".cnf"))
-
-;; trying out some of Jeff's configurations
-; - https://github.com/jstautz/.emacs.d/blob/master/init-customizations.el
-
-(setq home-dir "/Users/garretteidsvig/")
 
 ;; Put backups & autosaves in their place (not in current dir)
 (defvar backup-dir (concat home-dir ".emacs.backup/"))
@@ -76,19 +68,8 @@
 (line-number-mode 1)                         
 (column-number-mode 1)
 (global-linum-mode 1)
+(setq linum-format "%d ")
 
-;; https://github.com/zkim/emacs-dirtree
 (add-to-list 'load-path "~/.emacs.d/dirtree/")
 (require 'dirtree)
-
-;;;; http://www.emacswiki.org/emacs/TagsFile#tags_file
-;; brew install ctags
-;; http://ctags.sourceforge.net/
-;; great tutorials here: 
-;;    http://thegreylensmansview.blogspot.ca/2009/02/stone-tools-and-scala-development-part.html
-;;    http://scabl.blogspot.ca/2011/07/scala-emacs-and-etags.html
-;;    http://www.jayconrod.com/posts/36/emacs-etags-a-quick-introduction
-; --- getting ctags working to jump traits/classes/objects
-; --- in project you wish to add tags run:
-; find . -name '*.scala' | xargs etags -r ~/.emacs.d/ctags -a {} \;
 
