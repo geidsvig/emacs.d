@@ -86,4 +86,7 @@
 ;; using 'l' for 'lock'
 (global-set-key (kbd "C-c l") 'toggle-current-window-dedication)
 
+;; theme it
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'zenburn t)
 
