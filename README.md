@@ -28,6 +28,10 @@ How to:
 
   find . -name '*.scala' | xargs etags -r ~/.emacs.d/ctags -a {} \;
 
+* add ensime support for scala project
+
+  sbt "ensime generate"
+
 * Run 'emacs' in the directory of your scala project.
 
 * Once emacs is running, type the following to load plugins:
