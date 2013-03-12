@@ -43,7 +43,10 @@ How to:
 * dedicate the dirtree window
 
   C-c l
+ 
+* Use eTags to jump to definition by placing cursor on Trait/Class/Object and typing:
 
+  M-.
 
 References:
 -----------
