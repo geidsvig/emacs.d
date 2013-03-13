@@ -30,6 +30,8 @@
 (defvar autosave-dir (concat home-dir ".emacs.autosave/"))
 (setq backup-directory-alist `((".*" . ,backup-dir)))
 (setq auto-save-file-name-transforms `((".*" ,autosave-dir t)))
+(setq auto-save-interval 1000)
+(setq auto-save-timeout 60)
 
 ;; Make backups of files, even when they're in version control
 (setq vc-make-backup-files t)
@@ -89,4 +91,21 @@
 ;; theme it
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'zenburn t)
+
+;; iterm2 rebinds of
+; - option/alt to Esc
+; - command to Meta
+; see http://mcclanahoochie.com/blog/2011/08/remapping-macbook-pro-keys-for-emacs/
+(setq mac-option-modifier 'control)
+(setq mac-command-modifier 'meta)
+
+;; revert buffer to file system version
+(global-set-key (kbd "<f5>") 'revert-buffer)
+;; upon files changing in system auto revert buffer
+(global-auto-revert-mode 1)
+(setq auto-revert-verbose nil)
+
+;; find-grep update
+(grep-compute-defaults)
+(grep-apply-setting 'grep-find-command "find . ! -name '*~' ! -name '#*#' ! -wholename '*/target/*' ! -wholename '*/deb/*' ! -wholename '*/\.ensime*' -type f -print0 | xargs -0 grep -nH -e 'str' *")
 

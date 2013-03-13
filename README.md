@@ -16,6 +16,7 @@ that the Eclipse IDE has:
  - fuzzy file name matching for C-x C-f to avoid having to type in full file path to get to a file
  - etags to jump to definition of Scala object/class/trait
  - color theme : zenburn
+ - a useful grep-find that ignores directories that you are not likely to ever search
 
 How to:
 -------
@@ -47,6 +48,10 @@ How to:
 * Use eTags to jump to definition by placing cursor on Trait/Class/Object and typing:
 
   M-.
+
+* Use grep-find command to search for text in files
+
+  M-x grep-find RET
 
 References:
 -----------
