@@ -1,5 +1,8 @@
 (setq home-dir "/Users/garretteidsvig/")
 
+;; disable splash
+(setq inhibit-splash-screen t)
+
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
@@ -108,4 +111,12 @@
 ;; find-grep update
 (grep-compute-defaults)
 (grep-apply-setting 'grep-find-command "find . ! -name '*~' ! -name '#*#' ! -wholename '*/target/*' ! -wholename '*/deb/*' ! -wholename '*/\.ensime*' -type f -print0 | xargs -0 grep -nH -e 'str' *")
+
+;; use workgroups to preserve buffer/window layout
+: https://github.com/tlh/workgroups.el/blob/master/workgroups.el
+(add-to-list 'load-path "~/.emacs.d/workgroups/")
+(require 'workgroups)
+(setq wg-prefix-key (kbd "C-c w"))
+(workgroups-mode 1)
+(wg-load "~/.emacs.d/workgroups/workgroup1")
 
